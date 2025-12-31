@@ -12,7 +12,14 @@ qtile = "qtile";
 };
 in
 
+
+
 {
+
+    imports = [
+    	./modules/neovim.nix
+    ];
+
     home.username = "brennen";
     home.homeDirectory = "/home/brennen";
     home.stateVersion = "25.11";
@@ -36,15 +43,4 @@ in
 	    source = create_symlink "${dotfiles}/${subpath}";   
 	    recursive = true;
     }) configs;
-
-#TODO: Add Nvim config stuff and more
-
-home.packages = with pkgs; [
-	neovim
-	ripgrep
-	nil
-	nixpkgs-fmt
-	nodejs
-	gcc
-   ];
 }
