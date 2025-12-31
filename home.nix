@@ -9,10 +9,9 @@ create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 # etc
 configs = {
 qtile = "qtile";
+wezterm = "wezterm";
 };
 in
-
-
 
 {
 
@@ -30,13 +29,15 @@ in
         };
     };
 
-
     programs.git = {
 	    enable = true;
 	    settings.user = {
 		    name = "Brennen Witzens";
 		    email = "bwitzen@gmail.com";
 	    };
+    };
+    programs.wezterm = {
+    	enable = true;
     };
 
     xdg.configFile = builtins.mapAttrs (name: subpath: {
