@@ -12,7 +12,8 @@
 	lua-language-server
 	nil # nix language server
 	nixpkgs-fmt # nix formatter
-	rust-analyzer
+	rust-analyzer # Rust lsp
+	zls # Zig lsp
 
 	# Needed for Lazy.nvim
 	nodejs

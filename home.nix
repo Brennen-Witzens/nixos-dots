@@ -14,7 +14,6 @@ wezterm = "wezterm";
 in
 
 {
-
     imports = [
     	./modules/neovim.nix
     ];
@@ -28,7 +27,6 @@ in
             btw = "echo i use nixos, btw";
         };
     };
-
     programs.git = {
 	    enable = true;
 	    settings.user = {
@@ -36,9 +34,17 @@ in
 		    email = "bwitzen@gmail.com";
 	    };
     };
-    programs.wezterm = {
-    	enable = true;
-    };
+
+    home.packages = with pkgs; [
+	# Rust Install and Dependencies
+    	cargo
+	rustc
+	gcc
+	zig
+    	wezterm
+    ];
+
+    
 
     xdg.configFile = builtins.mapAttrs (name: subpath: {
 	    source = create_symlink "${dotfiles}/${subpath}";   
