@@ -7,14 +7,19 @@
             url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+	oxwm = {
+		url = "github:tonybanters/oxwm";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
     };
 
-        outputs = { self, nixpkgs, home-manager, ...}: {
+        outputs = { self, nixpkgs, home-manager, oxwm, ...}: {
             nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem
             {
           system = "x86_64-linux";
           modules = [
               ./configuration.nix
+		  oxwm.nixosModules.default
                   home-manager.nixosModules.home-manager
                   {
          home-manager = {
