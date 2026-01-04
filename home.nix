@@ -10,6 +10,7 @@ create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 configs = {
 qtile = "qtile";
 wezterm = "wezterm";
+nvim = "nvim";
 };
 in
 
@@ -33,6 +34,11 @@ in
 		    name = "Brennen Witzens";
 		    email = "bwitzen@gmail.com";
 	    };
+    };
+
+    programs.ssh = {
+    	enable = true;
+	addKeysToAgent = "yes";
     };
 
     home.packages = with pkgs; [
