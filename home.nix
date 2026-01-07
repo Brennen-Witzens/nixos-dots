@@ -11,6 +11,10 @@ configs = {
 qtile = "qtile";
 wezterm = "wezterm";
 nvim = "nvim";
+oxwm = "oxwm";
+ghostty = "ghostty";
+tmux = "tmux";
+rofi = "rofi";
 };
 in
 
@@ -48,6 +52,9 @@ in
 	gcc
 	zig
     	wezterm
+	tmux
+	rofi
+	xwallpaper
     ];
 
     
