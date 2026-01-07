@@ -9,7 +9,8 @@
 	fzf
 
 	# Language Servers
-	lua-language-server
+	lua-language-server # Lua lsp
+  stylua
 	nil # nix language server
 	nixpkgs-fmt # nix formatter
 	rust-analyzer # Rust lsp

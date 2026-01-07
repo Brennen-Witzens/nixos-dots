@@ -22,7 +22,7 @@
 local modkey = "Mod4"
 
 -- Terminal emulator command (defaults to alacritty)
-local terminal = "ghostty"
+local terminal = "wezterm"
 
 -- Color palette - customize these to match your theme
 -- Alternatively you can import other files in here, such as 

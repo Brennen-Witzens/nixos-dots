@@ -8,13 +8,13 @@ create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 # Nvim
 # etc
 configs = {
-qtile = "qtile";
-wezterm = "wezterm";
-nvim = "nvim";
-oxwm = "oxwm";
-ghostty = "ghostty";
-tmux = "tmux";
-rofi = "rofi";
+  qtile = "qtile";
+  wezterm = "wezterm";
+  nvim = "nvim";
+  oxwm = "oxwm";
+  ghostty = "ghostty";
+  tmux = "tmux";
+  rofi = "rofi";
 };
 in
 
@@ -47,14 +47,14 @@ in
 
     home.packages = with pkgs; [
 	# Rust Install and Dependencies
-    	cargo
-	rustc
-	gcc
-	zig
-    	wezterm
-	tmux
-	rofi
-	xwallpaper
+        cargo
+        rustc
+        gcc
+        zig
+        wezterm
+        tmux
+        rofi
+        xwallpaper
     ];
 
     
