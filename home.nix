@@ -15,6 +15,7 @@ configs = {
   ghostty = "ghostty";
   tmux = "tmux";
   rofi = "rofi";
+  helix = "helix";
 };
 in
 
@@ -42,7 +43,13 @@ in
 
     programs.ssh = {
     	enable = true;
-	addKeysToAgent = "yes";
+      enableDefaultConfig = false;
+      matchBlocks = {
+        "*" = {
+          addKeysToAgent = "yes";
+          identityFile = "~/.ssh/personal_key";
+        };
+      };      
     };
 
     home.packages = with pkgs; [
@@ -55,9 +62,8 @@ in
         tmux
         rofi
         xwallpaper
+        helix
     ];
-
-    
 
     xdg.configFile = builtins.mapAttrs (name: subpath: {
 	    source = create_symlink "${dotfiles}/${subpath}";   
