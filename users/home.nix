@@ -21,7 +21,6 @@ in
 
 {
     imports = [
-    	./modules/neovim.nix
     ];
 
     home.username = "brennen";

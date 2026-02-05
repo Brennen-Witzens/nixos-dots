@@ -1,11 +1,12 @@
-{ config, lib, pkgs, ... }:
-
+{ config, pkgs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-    ];
+  imports = [
+    ../../modules/nixos
+    /etc/nixos/hardware-configuration.nix
+    ./apps.nix
+  ];
 
+  
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -26,6 +27,9 @@
       autoRepeatInterval = 35;
       windowManager.qtile.enable = true;
       windowManager.oxwm.enable = true;
+      displayManager.sessionCommands = ''
+      xwallpaper --zoom ~/walls/walls1.jpg
+      '';
   };
   
   services.openssh = {
@@ -49,9 +53,6 @@
     ];
   };
 
-  
-  programs.firefox.enable = true;
-
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -59,6 +60,8 @@
     wget
     git
     ghostty
+    wezterm
+    rofi
   ];
 
   #TODO: Add more fonts
