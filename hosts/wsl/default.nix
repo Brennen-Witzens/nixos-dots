@@ -5,6 +5,10 @@ lib,
 ...
 }:
 {
+  imports = [
+    ../../modules/shared
+  ];
+
   networking.hostName = "wsl";
 
   wsl = {
