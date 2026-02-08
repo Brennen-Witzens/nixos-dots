@@ -1,24 +1,22 @@
-{ pkgs, ... }:
 {
-  imports = [../../user ];
+pkgs,
+me,
+lib,
+...
+}:
+{
+  networking.hostName = "wsl";
 
-  glade = {
-    apps.enable = false;
-
-    programs = {
-      enable = true;
-    };
-
-    tooling.enable = true;
-  };
-
-  programs.nix-ld.enable = true;
-  
   wsl = {
     enable = true;
     defaultUser = "brennen";
-    startMenuLaunchers = true;
-
-    wslConf.network.hostname = "bwitz";
+    useWindowsDriver = true;
   };
+
+  environment = {
+    systemPackages = with pkgs; [
+    ];
+  };
+
+  system.stateVersion = "25.11";
 }
