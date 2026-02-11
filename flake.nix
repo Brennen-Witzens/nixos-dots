@@ -25,16 +25,12 @@
       url = "github:tonybanters/oxwm";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-# Flake Management
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    }; 
-
-# Easy Hosts
-    easy-hosts = {
-      url = "github:tgirlcloud/easy-hosts";
+    
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixkpkgs.follows = "nixpkgs";
     };
+
   };
 
 
@@ -42,39 +38,42 @@
       nixpkgs,
       home-manager,
       oxwm,
+      nixos-wsl, 
+      sops-nix,
       ...
-  }: {
+  } @inputs :{
     nixosConfigurations = {
-        wsl = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-
-          modules = [
-            ./hosts/wsl
-            ./users/nixos.nix
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-
-                home-manager.users.brennen = import ./users/home.nix;
-                home-manager.backupFileExtension = "backup";
-              }
-          ];
-        };
+      wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/wsl
+          ./users/brennen/nixos.nix
+          sops-nix.nixosModules.sops
+          nixos-wsl.nixosModules.default
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.brennen = import ./users/brennen/home.nix;
+            home-manager.backupFileExtension = "backup";
+          }
+        ];
+      };
 
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-
+          specialArgs = { inherit inputs; };
           modules = [
               ./hosts/nixos
-              ./users/nixos.nix
+              ./users/brennen/nixos.nix
               oxwm.nixosModules.default
-
+              sops-nix.nixosModules.sops
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.brennen = import ./users/home.nix;
+                home-manager.users.brennen = import ./users/brennen/home.nix;
                 home-manager.backupFileExtension = "backup";
               }
           ];

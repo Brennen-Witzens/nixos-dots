@@ -1,0 +1,14 @@
+keys:
+  - &brennen ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHFdOKp7ztawqNqUOsIX+8MA/Cwi5D+YzK9GGz1vqX8T bwitzen@gmail.com
+
+creation_rules:
+  - path_regex: secrets/brennen\.yaml
+    key_groups:
+      - age:
+        - *brennen
+
+  - path_regex: secrets/services/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *brennen
+

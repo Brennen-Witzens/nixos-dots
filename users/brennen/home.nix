@@ -3,6 +3,7 @@
 let
 dotfiles = "${config.home.homeDirectory}/nixos-dots/config";
 create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+
 # TODO: Add more configs to this list
 # Ghostty/Wezterm
 # Nvim
@@ -32,23 +33,24 @@ in
             btw = "echo i use nixos, btw";
         };
     };
+  
     programs.git = {
-	    enable = true;
-	    settings.user = {
-		    name = "Brennen Witzens";
-		    email = "bwitzen@gmail.com";
-	    };
+      enable = true;
+      settings.user = {
+        name = "Brennen Witzens";
+        email = "bwitzen@gmail.com";
+      };
     };
 
     programs.ssh = {
-    	enable = true;
+      enable = true;
       enableDefaultConfig = false;
       matchBlocks = {
         "*" = {
           addKeysToAgent = "yes";
-          identityFile = "~/.ssh/personal_key";
+          userKnownHostsFile = "~/.ssh/known_hosts";
         };
-      };      
+      };
     };
 
     home.packages = with pkgs; [
@@ -63,6 +65,10 @@ in
         xwallpaper
         helix
     ];
+
+    home.sessionVariables = {
+      EDITOR = "nvim";
+    };
 
     xdg.configFile = builtins.mapAttrs (name: subpath: {
 	    source = create_symlink "${dotfiles}/${subpath}";   
