@@ -28,7 +28,7 @@
     
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixkpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
@@ -41,7 +41,7 @@
       nixos-wsl, 
       sops-nix,
       ...
-  } @inputs :{
+  }@inputs: {
     nixosConfigurations = {
       wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -52,7 +52,7 @@
           sops-nix.nixosModules.sops
           nixos-wsl.nixosModules.default
           home-manager.nixosModules.home-manager
-          {
+          { 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.brennen = import ./users/brennen/home.nix;
@@ -70,12 +70,12 @@
               oxwm.nixosModules.default
               sops-nix.nixosModules.sops
               home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.brennen = import ./users/brennen/home.nix;
-                home-manager.backupFileExtension = "backup";
-              }
+              #{
+              #  home-manager.useGlobalPkgs = true;
+              #  home-manager.useUserPackages = true;
+              #  home-manager.users.brennen = import ./users/brennen/home.nix;
+              #  home-manager.backupFileExtension = "backup";
+              #}
           ];
         };
     };
