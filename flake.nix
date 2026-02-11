@@ -52,12 +52,6 @@
           sops-nix.nixosModules.sops
           nixos-wsl.nixosModules.default
           home-manager.nixosModules.home-manager
-          { 
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.brennen = import ./users/brennen/home.nix;
-            home-manager.backupFileExtension = "backup";
-          }
         ];
       };
 
@@ -70,12 +64,6 @@
               oxwm.nixosModules.default
               sops-nix.nixosModules.sops
               home-manager.nixosModules.home-manager
-              #{
-              #  home-manager.useGlobalPkgs = true;
-              #  home-manager.useUserPackages = true;
-              #  home-manager.users.brennen = import ./users/brennen/home.nix;
-              #  home-manager.backupFileExtension = "backup";
-              #}
           ];
         };
     };
