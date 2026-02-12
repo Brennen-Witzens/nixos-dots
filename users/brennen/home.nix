@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, ... }:
 
 let
 dotfiles = "${config.home.homeDirectory}/nixos-dots/config";
@@ -18,13 +18,25 @@ configs = {
   helix = "helix";
 };
 in
-
 {
+    programs.home-manager.enable = true;
     imports = [
-      ../../home/core.nix
-      ../../home/programs
+      ../../modules/shared/home/secrets.nix
+      ./programs
     ];
-    
+
+    home =
+    {
+      username = "brennen";
+      homeDirectory = "/home/brennen";
+      stateVersion = "25.11";
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
+    };
+
+      
+
     xdg.configFile = builtins.mapAttrs (name: subpath: {
 	    source = create_symlink "${dotfiles}/${subpath}";   
 	    recursive = true;

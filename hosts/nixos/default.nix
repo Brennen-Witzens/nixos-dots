@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports = [
-    ../../modules/shared
+    ../../modules/shared/system
     /etc/nixos/hardware-configuration.nix
     ./apps.nix
   ];

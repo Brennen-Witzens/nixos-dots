@@ -41,10 +41,14 @@
       nixos-wsl, 
       sops-nix,
       ...
-  }@inputs: {
+  }@inputs: 
+  let
+    system = "x86_64-linux";
+  in
+  {
     nixosConfigurations = {
+      inherit system;
       wsl = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/wsl
@@ -56,7 +60,7 @@
       };
 
         nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
           specialArgs = { inherit inputs; };
           modules = [
               ./hosts/nixos
@@ -64,8 +68,26 @@
               oxwm.nixosModules.default
               sops-nix.nixosModules.sops
               home-manager.nixosModules.home-manager
+              
           ];
         };
+    };
+
+    homeManagerConfigurations = {
+      wslHomeManager = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          inputs.sops-nix.homeManagerModules.sops
+          ./users/brennen/home.nix
+        ];
+      };
+       nixosHomeManager = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          inputs.sops-nix.homeManagerModules.sops
+          ./users/brennen/home.nix
+        ];
+      };
     };
   };
 }

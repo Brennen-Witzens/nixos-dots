@@ -7,6 +7,8 @@
     wget
     fastfetch
     postgresql
+    age
+    sops
 
     # Languages
 		rustc
