@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, osConfig, inputs, ... }:
 
 let
 dotfiles = "${config.home.homeDirectory}/nixos-dots/config";
@@ -35,7 +35,6 @@ in
       };
     };
 
-      
 
     xdg.configFile = builtins.mapAttrs (name: subpath: {
 	    source = create_symlink "${dotfiles}/${subpath}";   

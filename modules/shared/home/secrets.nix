@@ -1,5 +1,7 @@
 {config, ... }:
 {
+
+  
   sops.defaultSopsFile = ../../../secrets/brennen.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/brennen/.config/sops/age/keys.txt";

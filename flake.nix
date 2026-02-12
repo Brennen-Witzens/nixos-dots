@@ -47,8 +47,8 @@
   in
   {
     nixosConfigurations = {
-      inherit system;
       wsl = nixpkgs.lib.nixosSystem {
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/wsl
@@ -68,7 +68,6 @@
               oxwm.nixosModules.default
               sops-nix.nixosModules.sops
               home-manager.nixosModules.home-manager
-              
           ];
         };
     };

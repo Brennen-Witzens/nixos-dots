@@ -3,7 +3,6 @@ let
 inherit (config.sops) secrets;
 in
 {
-  
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
