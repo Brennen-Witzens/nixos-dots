@@ -1,4 +1,4 @@
-{ config, osConfig, inputs, ... }:
+{ config, inputs, ... }:
 
 let
 dotfiles = "${config.home.homeDirectory}/nixos-dots/config";
@@ -21,7 +21,7 @@ in
 {
     programs.home-manager.enable = true;
     imports = [
-      ../../modules/shared/home/secrets.nix
+      ../../modules/shared/home
       ./programs
     ];
 

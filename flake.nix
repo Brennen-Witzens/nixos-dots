@@ -53,6 +53,7 @@
         modules = [
           ./hosts/wsl
           ./users/brennen/nixos.nix
+          ./users/brennen/default.nix
           sops-nix.nixosModules.sops
           nixos-wsl.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -65,28 +66,12 @@
           modules = [
               ./hosts/nixos
               ./users/brennen/nixos.nix
+              ./users/brennen/default.nix
               oxwm.nixosModules.default
               sops-nix.nixosModules.sops
               home-manager.nixosModules.home-manager
-          ];
+         ];
         };
-    };
-
-    homeManagerConfigurations = {
-      wslHomeManager = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [
-          inputs.sops-nix.homeManagerModules.sops
-          ./users/brennen/home.nix
-        ];
-      };
-       nixosHomeManager = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [
-          inputs.sops-nix.homeManagerModules.sops
-          ./users/brennen/home.nix
-        ];
-      };
     };
   };
 }
