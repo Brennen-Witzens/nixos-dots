@@ -27,7 +27,7 @@
       windowManager.qtile.enable = true;
       windowManager.oxwm.enable = true;
       displayManager.sessionCommands = ''
-      xwallpaper --zoom ~/walls/walls1.jpg
+      xwallpaper --zoom ~/nixos-dots/walls/walls1.jpg
       '';
   };
   
