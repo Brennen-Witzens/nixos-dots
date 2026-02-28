@@ -9,11 +9,15 @@
     postgresql
     age
     sops
+    tmux
 
     # Languages
-		rustc
-		cargo
+    rustc
+    cargo
+    python3
+
 		zig
+    # odin # Odin-lang maybe
 
     # TUI
 		neovim

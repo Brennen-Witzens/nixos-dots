@@ -30,9 +30,9 @@ require("lazy").setup({
         vim.cmd.colorscheme("nord")
       end,
     },
-    {
-      'saghen/blink.cmp',
-    },
+    --{
+    --  'saghen/blink.cmp',
+    --},
     -- import your plugins
     { import = "config.plugins" }
   },
