@@ -11,13 +11,29 @@
     sops
     tmux
 
+
     # Languages
+    ## Rust
     rustc
     cargo
+
+    ## Python
     python3
 
+    ## Zig
 		zig
-    # odin # Odin-lang maybe
+
+    ## Go
+    go
+
+    ## Odin
+    odin
+
+    # Gleam
+    erlang_26
+    gleam
+    rebar3
+
 
     # TUI
 		neovim
