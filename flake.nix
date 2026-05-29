@@ -2,23 +2,23 @@
   description = "NixOS from Scratch";
 
   inputs = {
-# Stable Nixpkgs
+    # Stable Nixpkgs
     # nixpkgs.url = "nixpkgs/nixos-25.11";
-# Unstable Nixpkgs
+    # Unstable Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-# Home Manager
+    # Home Manager
     # home-manager = {
     #   url = "github:nix-community/home-manager/release-25.11";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-# Home Manager Unstable
+    # Home Manager Unstable
     home-manager = {
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-# NixOS-WSL
+    # NixOS-WSL
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs = {
@@ -27,57 +27,50 @@
       };
     };
 
-# OXWM-btw
-    # oxwm = {
-    #   url = "github:tonybanters/oxwm";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    
+# Sops Nix
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-
-  outputs = {
+  outputs =
+    {
       nixpkgs,
       home-manager,
-      # oxwm,
-      nixos-wsl, 
+      nixos-wsl,
       sops-nix,
       ...
-  }@inputs: 
-  let
-    system = "x86_64-linux";
-  in
-  {
-    nixosConfigurations = {
-      wsl = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/wsl
-          ./users/brennen/nixos.nix
-          ./users/brennen/default.nix
-          sops-nix.nixosModules.sops
-          nixos-wsl.nixosModules.default
-          home-manager.nixosModules.home-manager
-        ];
-      };
+    }@inputs:
+    let
+      system = "x86_64-linux";
+    in
+    {
+      nixosConfigurations = {
+        wsl = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/wsl
+            ./users/brennen/nixos.nix
+            ./users/brennen/default.nix
+            sops-nix.nixosModules.sops
+            nixos-wsl.nixosModules.default
+            home-manager.nixosModules.home-manager
+          ];
+        };
 
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-              ./hosts/nixos
-              ./users/brennen/nixos.nix
-              ./users/brennen/default.nix
-              # oxwm.nixosModules.default
-              sops-nix.nixosModules.sops
-              home-manager.nixosModules.home-manager
-         ];
+            ./hosts/nixos
+            ./users/brennen/nixos.nix
+            ./users/brennen/default.nix
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+          ];
         };
+      };
     };
-  };
 }
