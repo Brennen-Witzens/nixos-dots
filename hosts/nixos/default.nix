@@ -8,7 +8,16 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.windows = {
+    "Windows" = {
+      title = "Windows 11";
+      efiDeviceHandle = "HD0d65535a3";
+    };
+  };
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
+
 
   networking.hostName = "nixos"; # Define your hostname.
 
@@ -29,6 +38,9 @@
       displayManager.sessionCommands = ''
       xwallpaper --zoom ~/nixos-dots/walls/walls1.jpg
       '';
+
+      videoDrivers = [ "amdgpu" ];
+
   };
   
   services.openssh = {
@@ -39,6 +51,7 @@
     }; 
   };
 
+  services.udisks2.enable = true;
 
 
 
@@ -64,6 +77,7 @@
     ghostty
     wezterm
     rofi
+    firefox
   ];
 
   #TODO: Add more fonts
