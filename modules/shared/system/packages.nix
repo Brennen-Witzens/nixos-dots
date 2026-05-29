@@ -10,7 +10,8 @@
     age
     sops
     tmux
-
+    starship
+    jujutsu
 
     # Languages
     ## Rust
@@ -30,10 +31,12 @@
     odin
 
     # Gleam
-    erlang_26
-    gleam
-    rebar3
+    # erlang_26
+    # gleam
+    # rebar3
 
+    # Lua
+    lua
 
     # TUI
 		neovim
