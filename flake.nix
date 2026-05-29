@@ -3,11 +3,18 @@
 
   inputs = {
 # Stable Nixpkgs
-    nixpkgs.url = "nixpkgs/nixos-25.11";
+    # nixpkgs.url = "nixpkgs/nixos-25.11";
+# Unstable Nixpkgs
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
 # Home Manager
+    # home-manager = {
+    #   url = "github:nix-community/home-manager/release-25.11";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+# Home Manager Unstable
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -21,10 +28,10 @@
     };
 
 # OXWM-btw
-    oxwm = {
-      url = "github:tonybanters/oxwm";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # oxwm = {
+    #   url = "github:tonybanters/oxwm";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -36,7 +43,7 @@
   outputs = {
       nixpkgs,
       home-manager,
-      oxwm,
+      # oxwm,
       nixos-wsl, 
       sops-nix,
       ...
@@ -66,7 +73,7 @@
               ./hosts/nixos
               ./users/brennen/nixos.nix
               ./users/brennen/default.nix
-              oxwm.nixosModules.default
+              # oxwm.nixosModules.default
               sops-nix.nixosModules.sops
               home-manager.nixosModules.home-manager
          ];

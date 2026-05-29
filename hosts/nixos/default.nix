@@ -20,16 +20,17 @@
 
   #TODO: Change display manager and window manager later
   services.displayManager.ly.enable = true;
-  services.xserver = {
-      enable = true;
-      autoRepeatDelay = 200;
-      autoRepeatInterval = 35;
-      windowManager.qtile.enable = true;
-      windowManager.oxwm.enable = true;
-      displayManager.sessionCommands = ''
-      xwallpaper --zoom ~/nixos-dots/walls/walls1.jpg
-      '';
-  };
+  services.xserver.windowManager.qtile.enable = true;
+  # services.xserver = {
+  #     enable = true;
+  #     autoRepeatDelay = 200;
+  #     autoRepeatInterval = 35;
+  #     windowManager.qtile.enable = true;
+  #     # windowManager.oxwm.enable = true;
+  #     displayManager.sessionCommands = ''
+  #     xwallpaper --zoom ~/nixos-dots/walls/walls1.jpg
+  #     '';
+  # };
   
   services.openssh = {
     enable = true;
