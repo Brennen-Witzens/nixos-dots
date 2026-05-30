@@ -1,10 +1,21 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ../../modules/shared/system
     /etc/nixos/hardware-configuration.nix
     ./apps.nix
   ];
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  hardware.amdgpu.initrd.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -18,7 +29,6 @@
 
   # boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
 
-
   networking.hostName = "nixos"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
@@ -30,32 +40,34 @@
   #TODO: Change display manager and window manager later
   services.displayManager.ly.enable = true;
   services.xserver = {
-      enable = true;
-      autoRepeatDelay = 200;
-      autoRepeatInterval = 35;
-      windowManager.qtile.enable = true;
-      windowManager.oxwm.enable = true;
-      displayManager.sessionCommands = ''
+    enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35;
+    windowManager.qtile.enable = true;
+    windowManager.oxwm.enable = true;
+    displayManager.sessionCommands = ''
       xwallpaper --zoom ~/nixos-dots/walls/walls1.jpg
-      '';
-
-      videoDrivers = [ "amdgpu" ];
-
+    '';
+    videoDrivers = [ "amdgpu" ];
+    enableTearFree = true;
+    resolutions = [
+      {
+        x = 1920;
+        y = 1080;
+      }
+    ];
   };
-  
+
   services.openssh = {
     enable = true;
     settings = {
       PasswordAuthentication = false;
       PubkeyAuthentication = true;
-    }; 
+    };
   };
 
   services.udisks2.enable = true;
 
-
-
-  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   #users.users.brennen = {
   #  isNormalUser = true;
@@ -82,10 +94,11 @@
 
   #TODO: Add more fonts
   fonts.packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
+    nerd-fonts.jetbrains-mono
   ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   system.stateVersion = "25.11";
-
 }
-
