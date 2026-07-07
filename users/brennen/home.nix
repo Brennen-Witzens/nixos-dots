@@ -16,6 +16,7 @@ configs = {
   tmux = "tmux";
   rofi = "rofi";
   helix = "helix";
+  starship = "starship";
 };
 in
 {
@@ -31,7 +32,7 @@ in
       homeDirectory = "/home/brennen";
       stateVersion = "25.11";
       sessionVariables = {
-        EDITOR = "nvim";
+        EDITOR = "hx";
       };
     };
 

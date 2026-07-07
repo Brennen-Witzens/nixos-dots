@@ -5,5 +5,6 @@
       nrsi = "sudo nixos-rebuild switch --impure --flake .#nixos";
       nrsw = "sudo nixos-rebuild switch --flake .#wsl";
     };
+    bashrcExtra = ''eval "$(starship init bash)"'';
   };
 }

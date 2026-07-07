@@ -1,0 +1,11 @@
+# Get editor completions
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Insert lines
+add_newline = true
+
+[character]
+success_symbol = '[>](bold_green)'
+
+[package]
+disabled = true
