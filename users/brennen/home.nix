@@ -17,6 +17,8 @@ configs = {
   rofi = "rofi";
   helix = "helix";
   starship = "starship";
+  umbriel = "umbriel";
+  noctalia = "noctalia";
 };
 in
 {

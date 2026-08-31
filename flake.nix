@@ -27,11 +27,24 @@
       };
     };
 
-# Sops Nix
+    # Sops Nix
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Umbriel
+    umbriel = {
+      url = "git+https://github.com/noctalia-dev/umbriel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Noctalia
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -40,6 +53,8 @@
       home-manager,
       nixos-wsl,
       sops-nix,
+      umbriel,
+      noctalia,
       ...
     }@inputs:
     let
@@ -69,6 +84,20 @@
             ./users/brennen/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
+          ];
+        };
+
+        laptop = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/laptop
+            ./users/brennen/nixos.nix
+            ./users/brennen/default.nix
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+            umbriel.nixosModules.default
+            noctalia.nixosModules.default
           ];
         };
       };

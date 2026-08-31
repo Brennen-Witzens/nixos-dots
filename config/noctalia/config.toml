@@ -1,0 +1,13 @@
+[theme]
+mode = "dark"
+
+[bar.default]
+position = "top"
+
+
+[wallpaper]
+enabled = true
+fill_mode = "stretch"
+
+[wallpaper.default]
+path = "~/nixos-dots/walls/walls4.jpg"

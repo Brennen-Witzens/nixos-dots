@@ -1,0 +1,80 @@
+[general]
+autostart = ["noctalia"]
+mod_key = "Super"
+show_cheatsheet = true
+focus_on_activate = false
+honor_restored_maximize = false
+
+[workspaces]
+back_and_forth = true
+# empty_above = true
+
+# Need to work on Outputs
+# Power management etc,
+# Monitors, key rate
+[output.LVDS-1]
+mode = "1366x768@60"
+position = [0, 0]
+scale = 1.00
+vrr = "fullscreen"
+
+
+
+# Appearance
+[appearance]
+prefer_no_csd = true
+border_width = 2
+outer_border_width = 0
+corner_radius = 5
+drag_opacity = 0.75
+border_focused = "#7AA3FFFF"
+border_unfocused = "#292933FF"
+
+[layout]
+mode = "master"
+gap = 5
+# width_presets = [0.333, 0.5, 0.667] # width and height cycling
+
+# [layout.scrolling]
+# # Vertical workspaces stack horizontal lanes from top to bottom
+# direction = "horizontal"
+# center_underfull_strip = true # center the strip whenever it is narrower than the viewport
+# # center_focused = true # always center the focused column
+# # expand_single_colum = true # fill lone column to viewport width
+
+[keybinds]
+"Mod+Return" = "spawn:wezterm"
+"Mod+Q" = "window-close"
+"Mod+Shift+Q" = "session-quit"
+"Mod+Shift+R" = "config-reload"
+"Mod+T" = "window-toggle-floating"
+"Mod+D" = "spawn:noctalia msg panel-toggle launcher"
+"Mod+1" = "workspace-switch:1"
+"Mod+2" = "workspace-switch:2"
+"Mod+3" = "workspace-switch:3"
+"Mod+4" = "workspace-switch:4"
+"Mod+5" = "workspace-switch:5"
+"Mod+6" = "workspace-switch:6"
+"Mod+7" = "workspace-switch:7"
+"Mod+8" = "workspace-switch:8"
+"Mod+9" = "workspace-switch:9"
+"Mod+Shift+1" = "window-move-to-workspace:1"
+"Mod+Shift+2" = "window-move-to-workspace:2"
+"Mod+Shift+3" = "window-move-to-workspace:3"
+"Mod+Shift+4" = "window-move-to-workspace:4"
+"Mod+Shift+5" = "window-move-to-workspace:5"
+"Mod+Shift+6" = "window-move-to-workspace:6"
+"Mod+Shift+7" = "window-move-to-workspace:7"
+"Mod+Shift+8" = "window-move-to-workspace:8"
+"Mod+Shift+9" = "window-move-to-workspace:9"
+"Mod+H" = "window-focus-left"
+"Mod+J" = "window-focus-down"
+"Mod+K" = "window-focus-up"
+"Mod+L" = "window-focus-right"
+"Mod+0" = "cheatsheet-toggle"
+
+# Move window through row/column
+"Mod+Shift+H" = "window-swap-previous"
+"Mod+Shift+J" = "window-move-down"
+"Mod+Shift+K" = "window-move-up"
+"Mod+Shift+L" = "window-swap-next"
