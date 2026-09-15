@@ -7,8 +7,8 @@ position = "top"
 
 [wallpaper]
 enabled = true
-fill_mode = "fit"
+fill_mode = "stretch"
 directory = "/home/brennen/nixos-dots/walls/"
 
 [wallpaper.default]
-path = "/home/brennen/nixos-dots/walls/walls1.jpg"
+path = "/home/brennen/nixos-dots/walls/walls3.jpg"
