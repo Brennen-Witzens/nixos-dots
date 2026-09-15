@@ -12,8 +12,8 @@ back_and_forth = true
 # Need to work on Outputs
 # Power management etc,
 # Monitors, key rate
-[output.LVDS-1]
-mode = "1366x768@60"
+[output.HMDI-A-1]
+mode = "1920x1080@143"
 position = [0, 0]
 scale = 1.00
 vrr = "fullscreen"
@@ -26,9 +26,9 @@ prefer_no_csd = true
 border_width = 2
 outer_border_width = 0
 corner_radius = 5
-drag_opacity = 0.75
-border_focused = "#7AA3FFFF"
-border_unfocused = "#292933FF"
+# drag_opacity = 0.75
+# border_focused = "#7AA3FFFF"
+# border_unfocused = "#292933FF"
 
 [layout]
 mode = "master"

@@ -84,6 +84,8 @@
             ./users/brennen/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
+            umbriel.nixosModules.default
+            noctalia.nixosModules.default
           ];
         };
 
