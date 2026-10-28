@@ -5,6 +5,7 @@
 		git
 		gcc
     wget
+    gnumake
     fastfetch
     postgresql
     age
@@ -12,6 +13,7 @@
     tmux
     starship
     jujutsu
+    vis
 
     # Languages
     ## Rust
