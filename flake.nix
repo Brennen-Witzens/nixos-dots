@@ -33,11 +33,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Umbriel
-    umbriel = {
-      url = "git+https://github.com/noctalia-dev/umbriel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # # Umbriel
+    # umbriel = {
+    #   url = "git+https://github.com/noctalia-dev/umbriel";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Noctalia
     noctalia = {
@@ -53,7 +53,7 @@
       home-manager,
       nixos-wsl,
       sops-nix,
-      umbriel,
+      # umbriel,
       noctalia,
       ...
     }@inputs:
@@ -84,7 +84,7 @@
             ./users/brennen/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
-            umbriel.nixosModules.default
+            # umbriel.nixosModules.default
             noctalia.nixosModules.default
           ];
         };
@@ -98,7 +98,7 @@
             ./users/brennen/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
-            umbriel.nixosModules.default
+            # umbriel.nixosModules.default
             noctalia.nixosModules.default
           ];
         };

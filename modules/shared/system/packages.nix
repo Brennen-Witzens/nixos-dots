@@ -14,6 +14,7 @@
     starship
     jujutsu
     vis
+    flow-control
 
     # Languages
     ## Rust
